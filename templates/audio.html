@@ -3,6 +3,8 @@
 <a id="download">Download</a>
 <button id="start">Start</button>
 <button id="stop">Stop</button>
+
+
 <script>
   let shouldStop = false;
   let stopped = false;
@@ -31,6 +33,11 @@
 	//xhr.setRequestHeader('Content-Type', 'multipart/form-data');
 	var formData = new FormData();
 	formData.append("audio", audio);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+        window.location.href = "/textfromaudio"
+    }
+  }
 	xhr.send(formData);
     });
 
