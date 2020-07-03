@@ -50,7 +50,7 @@ def storefinal():
 	f = open(UPLOAD_FOLDER+"result.txt", 'w')
 	f.write("Hello there")
 	f.write(request.form["first"])
-	f.write(request.fomr["second"])
+	f.write(request.form["second"])
 	f.close()
 
 	return render_template('datastored.html')
@@ -58,6 +58,8 @@ def storefinal():
 @app.route("/formthingy", methods = ['GET'])
 def formthing(dummy):
 	# Function here to convert that transcript into whatever form details
+	# add <input> fields in the formthingy.html for whatever you need
+	# names will be stored as keys
 	formData = getStuff(dummy)
 	return render_template("formthingy.html", data=formData)
 
@@ -66,6 +68,7 @@ def getText():
 	return "This is the transcript. That is the audio test."
 
 def getStuff(dummy):
+	# if you wanna change first, second, change the {{ data.X }} in formthingy.html
 	return {'first':dummy["transcript"], 'second':dummy["transcript"].lower()}
 
 
